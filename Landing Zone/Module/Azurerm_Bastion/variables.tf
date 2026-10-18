@@ -1,0 +1,4 @@
+variable "bastion" {}
+variable "pip" {
+  
+}
