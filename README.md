@@ -235,7 +235,7 @@ Through this project, the key areas demonstrated are:
 
 ------------------------------------------------------------------------
 
-::: {align="center"}
+
 ### 💙 Built with Terraform + Microsoft Azure
 
 **Infrastructure as Code • Reusable Modules • Secure by Design**
