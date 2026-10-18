@@ -18,98 +18,29 @@ landing-zone foundation.**
 
 ------------------------------------------------------------------------
 
+
 ## 🌟 Project Highlights
 
-```{=html}
-<table>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td width="50%">
-```
 ### 🧩 Reusable Terraform Modules
+Organized, reusable Terraform modules for consistent infrastructure deployment and easier maintenance.
 
-Organized modules for repeatable infrastructure deployment and easier
-maintenance.
-
-```{=html}
-</td>
-```
-```{=html}
-<td width="50%">
-```
 ### 🌍 Environment Separation
+Separate `dev/` and `prod/` folders for environment-specific configuration and resource management.
 
-Separate `dev/` and `prod/` environment folders for environment-specific
-configuration.
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td>
-```
 ### 🔐 Azure Key Vault Integration
+Retrieves VM administrator credentials from Azure Key Vault instead of hardcoding secrets in Terraform files.
 
-Reads VM administrator username and password from Key Vault secrets
-instead of hardcoding them in `.tf` files.
-
-```{=html}
-</td>
-```
-```{=html}
-<td>
-```
 ### 🛡️ Secure VM Access
+Uses Azure Bastion for VM access, with a Public IP configured for Bastion rather than directly on the VM.
 
-Azure Bastion + Public IP architecture supports managed access without
-assigning a public IP directly to the VM.
-
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-<tr>
-```
-```{=html}
-<td>
-```
 ### 📈 Infrastructure as Code
+Terraform enables infrastructure changes to be reviewed with `terraform plan` before deployment.
 
-Terraform configuration makes infrastructure changes reviewable through
-`plan` before deployment.
-
-```{=html}
-</td>
-```
-```{=html}
-<td>
-```
 ### 🌐 Azure Networking
+Includes Virtual Networks, subnets, network interfaces, Public IP, and NSG-related configuration for network connectivity and access control.
 
-VNet, subnets, network interfaces and NSG-related configuration provide
-the foundation for network segmentation and access control.
+---
 
-```{=html}
-</td>
-```
-```{=html}
-</tr>
-```
-```{=html}
-</table>
-```
 ## 🧱 Architecture
 
 ``` mermaid
