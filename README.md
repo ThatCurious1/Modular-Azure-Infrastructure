@@ -1,4 +1,4 @@
-::: {align="center"}
+
 # ☁️🚀 Azure Terraform Landing Zone
 
 ### 🏗️ Modular Infrastructure • 🔐 Key Vault • 🌐 Secure Networking • ⚙️ Dev/Prod
