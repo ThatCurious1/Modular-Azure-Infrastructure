@@ -14,6 +14,10 @@ parameters:
     - prod
 
 variables:
+- ${{ if eq(parameters.env, 'dev') }}:
+  - group: VG-dev
+- ${{ if eq(parameters.env, 'prod') }}:
+  - group: VG-prod
 - name: wd
   value: $(System.DefaultWorkingDirectory)/environment/${{ parameters.env }}
 
@@ -75,11 +79,11 @@ stages:
       pool: server
       displayName: Manual Approval
       steps:
-      - task: ManualIntervention@8
-        timeoutInMinutes: 2
+      - task: ManualValidation@1
+        timeoutInMinutes: 4
         inputs:
-          instructions: 'approval required'
-          emailRecipients: 'abc@gmail.com'
+          notifyUsers: 'abc2@gmail.com'
+          instructions: 'approval ddeo'
 
   - stage: Apply
     displayName: Apply
