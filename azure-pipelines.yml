@@ -15,7 +15,92 @@ parameters:
 
 variables:
 - name: wd
-  value:
+  value: $(System.DefaultWorkingDirectory)/environment/${{ parameters.env }}
 
 stages:
-  - 
+  - stage: Validate
+    displayName: Terraform Init and Validate
+    jobs:
+    - job: InitandValidate
+      displayName: Terraform Init and Validate
+      steps:
+      - task: TerraformTask@5
+        displayName: Terraform Init
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          workingDirectory: '$(wd)'
+          backendServiceArm: 'Practice_service_connection'
+          backendAzureRmResourceGroupName: '$(rg)'
+          backendAzureRmStorageAccountName: '$(sa)'
+          backendAzureRmContainerName: '$(container)'
+          backendAzureRmKey: '$(key)'
+
+      - task: TerraformTask@5
+        displayName: Terraform Validate
+        inputs:
+          provider: 'azurerm'
+          command: 'validate'
+          workingDirectory: '$(wd)'
+
+  - stage: Plan
+    displayName: Terraform Plan
+    jobs: 
+    - job: 'TerraformPlan'
+      displayName: Terraform Plan
+      steps:
+      - task: TerraformTask@5
+        displayName: Terraform Init
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          workingDirectory: '$(wd)'
+          backendServiceArm: 'Practice_service_connection'
+          backendAzureRmResourceGroupName: '$(rg)'
+          backendAzureRmStorageAccountName: '$(sa)'
+          backendAzureRmContainerName: '$(container)'
+          backendAzureRmKey: '$(key)'   
+
+      - task: TerraformTask@5
+        inputs:
+          provider: 'azurerm'
+          command: 'plan'
+          workingDirectory: '$(wd)'
+          environmentServiceNameAzureRM: 'Practice_service_connection'
+
+  - stage: Approval
+    displayName: ManualApproval
+    jobs:
+    - job: Approval
+      displayName: Manual Approval
+      steps:
+      - task: ManualIntervention@8
+        timeoutInMinutes: 2
+        inputs:
+          instructions: 'approval required'
+          emailRecipients: 'abc@gmail.com'
+
+  - stage: Apply
+    displayName: Apply
+    jobs:
+    - job: Apply
+      displayName: Terraform Apply 
+      steps:
+      - task: TerraformTask@5
+        displayName: Terraform Init
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          workingDirectory: '$(wd)'
+          backendServiceArm: 'Practice_service_connection'
+          backendAzureRmResourceGroupName: '$(rg)'
+          backendAzureRmStorageAccountName: '$(sa)'
+          backendAzureRmContainerName: '$(container)'
+          backendAzureRmKey: '$(key)'
+      - task: TerraformTask@5
+        inputs:
+          provider: 'azurerm'
+          command: 'apply'
+          workingDirectory: '$(wd)'
+          environmentServiceNameAzureRM: 'Practice_service_connection'
+          
