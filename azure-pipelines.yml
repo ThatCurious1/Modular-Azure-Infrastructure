@@ -72,6 +72,7 @@ stages:
     displayName: ManualApproval
     jobs:
     - job: Approval
+      pool: server
       displayName: Manual Approval
       steps:
       - task: ManualIntervention@8
@@ -103,4 +104,3 @@ stages:
           command: 'apply'
           workingDirectory: '$(wd)'
           environmentServiceNameAzureRM: 'Practice_service_connection'
-          
