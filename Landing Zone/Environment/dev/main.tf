@@ -43,24 +43,24 @@ module "subnet_name" {
 
 }
 
-module "bastion" {
-  depends_on = [module.subnet_name]
-  source     = "../../Module/Azurerm_Bastion"
-  pip = {
-    dev = {
-      name                = "dev-pip"
-      location            = "central india"
-      resource_group_name = "dev-rg1"
-    }
-  }
-  bastion = {
-    dev = {
-      name                = "AzureBastion"
-      location            = "central india"
-      resource_group_name = "dev-rg1"
-    }
-  }
-}
+#module "bastion" {
+ # depends_on = [module.subnet_name]
+  #source     = "../../Module/Azurerm_Bastion"
+#  pip = {
+ #   dev = {
+  #    name                = "dev-pip"
+   #   location            = "central india"
+    #  resource_group_name = "dev-rg1"
+  #  }
+ # }
+ # bastion = {
+  #  dev = {
+  #    name                = "AzureBastion"
+   #   location            = "central india"
+    #  resource_group_name = "dev-rg1"
+    #}
+ # }
+#}
 
 module "vms" {
   depends_on = [module.subnet_name]
