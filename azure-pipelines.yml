@@ -19,7 +19,7 @@ variables:
 - ${{ if eq(parameters.env, 'prod') }}:
   - group: VG-prod
 - name: wd
-  value: $(System.DefaultWorkingDirectory)/environment/${{ parameters.env }}
+  value: $(System.DefaultWorkingDirectory)/Landing Zone/Environment/${{ parameters.env }}
 
 stages:
   - stage: Validate
