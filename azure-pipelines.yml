@@ -1,0 +1,21 @@
+trigger:
+- main
+- features/*
+
+pool: Default
+
+parameters:
+- name: env
+  displayName: Select Environment
+  type: string
+  default: dev
+  values:
+    - dev
+    - prod
+
+variables:
+- name: wd
+  value:
+
+stages:
+  - 
