@@ -6,12 +6,12 @@ terraform {
     }
   }
 
-  backend "azurerm" {
-    resource_group_name  = "backend_pipeline"
-    storage_account_name = "pipelinestorageaccount13"
-    container_name       = "anqit-tfstate"
-    key                  = "prod.terraform.anqit-tfstate"
-  }
+#  backend "azurerm" {
+#    resource_group_name  = "backend_pipeline"
+#    storage_account_name = "pipelinestorageaccount13"
+#    container_name       = "anqit-tfstate"
+#    key                  = "prod.terraform.anqit-tfstate"
+#  }
 }
 
 
